@@ -13,7 +13,7 @@
 
     <!-- آیکون‌های محلی -->
     <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css')}}">
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
 
 </head>
@@ -31,8 +31,18 @@
         <div class="register-form-header">
             <h2>ثبت نام کاربر جدید</h2>
         </div>
-        
-        <form id="registerForm">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
             <div class="register-form-group">
                 <label for="fname">نام</label>
                 <input type="text" name="fname" id="fname" class="register-form-control" placeholder="نام" required>
