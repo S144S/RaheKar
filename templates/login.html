@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام | راهِکار</title>
+    <!-- فونت‌های محلی -->
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Regular')}}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Medium')}}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Bold')}}" as="font" type="font/woff2" crossorigin>
+
+    <!-- آیکون‌های محلی -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+</head>
+<body class="register-body">
+
+<div class="register-container">
+    <div class="register-image-side">
+        <div class="register-image-content">
+            <img src="{{ url_for('static', filename='images/img22.png')}}" alt="تصویر ثبت نام" class="register-floating">
+            <h3>به خانواده راهِکار بپیوندید</h3>
+        </div>
+    </div>
+    
+    <div class="login-form-side">
+        <div class="login-form-header">
+            <h2>ورود</h2>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="post">
+            <div class="login-form-group">
+                <label for="phone">شماره همراه</label>
+                <input type="text" name="phone" id="phone" class="login-form-control" placeholder="09122117222" required>
+            </div>
+            
+            <div class="login-form-group">
+                <label for="password">رمز عبور</label>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="password" class="login-form-control" placeholder="••••••••" required>
+                    <span class="login-password-toggle" id="togglePassword">
+                    </span>
+                </div>
+            </div>
+            
+            <div class="login-remember-forgot">
+                <div class="login-remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">مرا به خاطر بسپار</label>
+                </div>
+                <div class="login-forgot-password">
+                    <a href="#">رمز عبور را فراموش کرده‌اید؟</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-btn">ورود</button>
+            
+            <div class="login-register-link">
+                حساب کاربری ندارید؟ <a href="{{ url_for('register') }}">ثبت نام کنید</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/js.js')}}"></script>
+
+</body>
+</html>

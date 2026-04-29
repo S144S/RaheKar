@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام | راهِکار</title>
+    <!-- فونت‌های محلی -->
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Regular')}}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Medium')}}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Bold')}}" as="font" type="font/woff2" crossorigin>
+
+    <!-- آیکون‌های محلی -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+</head>
+<body class="register-body">
+
+<div class="register-container">
+    <div class="register-image-side">
+        <div class="register-image-content">
+            <img src="{{ url_for('static', filename='images/img22.png')}}" alt="تصویر ثبت نام" class="register-floating">
+            <h3>به خانواده راهِکار بپیوندید</h3>
+        </div>
+    </div>
+    
+    <div class="register-form-side">
+        <div class="register-form-header">
+            <h2>ثبت نام کاربر جدید</h2>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="register-form-group">
+                <label for="fname">نام</label>
+                <input type="text" name="fname" id="fname" class="register-form-control" placeholder="نام" required>
+                <div class="register-error-message" id="fname-error">لطفاً نام خود را وارد کنید</div>
+            </div>
+            <div class="register-form-group">
+                <label for="lname">نام خانوادگی</label>
+                <input type="text" name="lname" id="lname" class="register-form-control" placeholder="نام خانوادگی" required>
+                <div class="register-error-message" id="lname-error">لطفاً نام خود را وارد کنید</div>
+            </div>
+            
+            <div class="register-form-group">
+                <label for="phone">شماره همراه</label>
+                <input type="text" name="phone" id="phone" class="register-form-control" placeholder="09122117222" required>
+                <div class="register-error-message" id="phone-error">لطفاً یک شماره معتبر وارد کنید</div>
+            </div>
+
+            <div class="register-form-group">
+                <label for="grade">پایه تحصیلی</label>
+                <input type="number" name="grade" id="grade" class="register-form-control" placeholder="7" min="7" max="9" required>
+                <div class="register-error-message" id="grade-error">لطفاً یک پایه معتبر وارد کنید</div>
+            </div>
+            
+            <div class="register-form-group">
+                <label for="password">رمز عبور</label>
+                <div class="register-password-container">
+                    <input type="password" name="password" id="password" class="register-form-control" placeholder="••••••••" required>
+                    <button type="button" class="register-password-toggle" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="register-password-strength">
+                    <div class="register-strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="register-strength-text" id="strengthText">قدرت رمز عبور: ضعیف</div>
+            </div>
+            
+            <div class="register-terms-check">
+                <input type="checkbox" id="agreeTerms" required>
+                <label for="agreeTerms">با <a href="#">شرایط و قوانین</a> موافقم</label>
+            </div>
+            <div class="register-error-message" id="terms-error">لطفاً شرایط و قوانین را بپذیرید</div>
+            
+            <button type="submit" class="register-btn" id="submitBtn">
+                <span id="btnText">ثبت نام</span>
+            </button>
+            
+            <div class="register-success-message" id="successMessage">ثبت نام با موفقیت انجام شد!</div>
+            
+            <div class="register-login-link">
+                قبلا ثبت نام کرده‌اید؟ <a href="login.html">وارد شوید</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/js.js')}}"></script>
+
+</body>
+</html>
