@@ -30,6 +30,7 @@ def load_user(user_id):
     return Users.query.get(int(user_id))
 
 # APP =========================================================================
+# ثبت نام
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -63,7 +64,7 @@ def register():
         flash("ثبت نام با موفقیت انجام شد!", "success")
         return redirect(url_for('login'))
     return render_template("register.html")
-
+# ورود
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -76,18 +77,22 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             flash("با موفقیت وارد شدید", "success")
-            return redirect(url_for("dashboard"))
+            return redirect(url_for("home"))
 
         flash("شماره یا رمز اشتباه است", "danger")
 
     return render_template("login.html")
-
+# خروج
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for("login"))
-
+# صفحه بعد از وارد شدن
+@app.route('/')
+@login_required
+def home():
+    return render_template("index.html", user=current_user)
 
 if __name__ == "__main__":
     with app.app_context():
