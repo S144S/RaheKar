@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block title %}تماس با ما | راهِکار{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="new-hero">
+    <div class="container new-hero-container">
+        <div class="new-hero-content">
+            <div class="new-hero-badge">
+                <i class="fas fa-phone-alt"></i>
+                <span>ارتباط با راهِکار</span>
+            </div>
+            <h1 class="new-hero-title">با ما در ارتباط باشید</h1>
+            <p class="new-hero-description">
+                اگر سوالی دارید، نیاز به راهنمایی دارید یا می‌خواهید با تیم ما همکاری کنید،
+                از طریق فرم زیر یا اطلاعات تماس با ما ارتباط بگیرید.
+            </p>
+        </div>
+        <div class="new-hero-visual">
+            <div class="new-hero-image">
+                <img src="{{ url_for('static', filename='images/hero3.png') }}" alt="تماس با راهِکار">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- محتوای صفحه -->
+<section class="content-contact-section">
+    <div class="content-container">
+        <div class="content-section-header">
+            <span class="content-section-subtitle">ارتباط با ما</span>
+            <h2 class="content-section-title">راه‌های ارتباطی</h2>
+            <p class="content-section-description">
+                ما مشتاقانه منتظر شنیدن نظرات، پیشنهادات و سوالات شما هستیم. 
+            </p>
+        </div>
+        
+        <div class="content-contact-container">
+            <div class="content-contact-info">
+                
+                <!-- کارت تماس تلفنی -->
+                <div class="content-contact-card">
+                    <div class="content-contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="content-contact-title">تماس تلفنی</h3>
+                    <p class="content-contact-description">
+                        برای پاسخ سریع به سوالات خود، با شماره‌های زیر تماس بگیرید.
+                    </p>
+                    <div class="content-contact-details">
+                        <div class="content-contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        </div>
+                        <div class="content-contact-detail">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>۰۹۱۲-۱۲۳۴۵۶۷</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- کارت ایمیل -->
+                <div class="content-contact-card">
+                    <div class="content-contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="content-contact-title">ایمیل</h3>
+                    <p class="content-contact-description">
+                        برای مسائل غیرفوری یا ارسال مدارک، از طریق ایمیل با ما در ارتباط باشید.
+                    </p>
+                    <div class="content-contact-details">
+                        <div class="content-contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@faramooz.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- فرم تماس -->
+            <div class="content-contact-form-container">
+                <div class="content-form-header">
+                    <h3 class="content-form-title">پیام خود را ارسال کنید</h3>
+                </div>
+                
+                <form class="content-contact-form" id="content-contact-form">
+                    <div class="content-form-row">
+                        <div class="content-form-group">
+                            <label for="content-name" class="content-form-label">نام و نام خانوادگی</label>
+                            <input type="text" id="content-name" class="content-form-input" placeholder="نام خود را وارد کنید" required>
+                            <div class="content-form-error">لطفاً نام خود را وارد کنید</div>
+                        </div>
+                        <div class="content-form-group">
+                            <label for="content-email" class="content-form-label">ایمیل</label>
+                            <input type="email" id="content-email" class="content-form-input" placeholder="ایمیل خود را وارد کنید" required>
+                            <div class="content-form-error">لطفاً یک ایمیل معتبر وارد کنید</div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-form-group">
+                        <label for="content-subject" class="content-form-label">موضوع</label>
+                        <input type="text" id="content-subject" class="content-form-input" placeholder="موضوع پیام خود را وارد کنید" required>
+                        <div class="content-form-error">لطفاً موضوع پیام را وارد کنید</div>
+                    </div>
+                    
+                    <div class="content-form-group">
+                        <label for="content-message" class="content-form-label">پیام</label>
+                        <textarea id="content-message" class="content-form-textarea" placeholder="پیام خود را بنویسید..." required></textarea>
+                        <div class="content-form-error">لطفاً پیام خود را وارد کنید</div>
+                    </div>
+                    
+                    <button type="submit" class="content-btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>ارسال پیام</span>
+                    </button>
+                    
+                    <div class="content-success-message" id="content-success-message">
+                        پیام شما با موفقیت ارسال شد. در اسرع وقت با شما تماس خواهیم گرفت.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr>
+
+<!-- بخش سوالات متداول -->
+<section class="content-faq-section">
+    <div class="content-container">
+        <div class="content-section-header">
+            <span class="content-section-subtitle">سوالات متداول</span>
+            <h2 class="content-section-title">پاسخ به پرسش‌های پرتکرار درباره راهِکار</h2>
+            <p class="content-section-description">
+                در این بخش به تعدادی از سوالات متداول کاربران درباره نحوه کارکرد راهِکار و مسیرهای شغلی پاسخ داده‌ایم.
+                اگر پاسخ سوال خود را پیدا نکردید، از طریق صفحه تماس با ما پیام بفرستید.
+            </p>
+        </div>
+        
+        <div class="content-faq-container">
+            <!-- سوال ۱ -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>راهِکار دقیقاً چه کاری انجام می‌دهد؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        راهِکار یک پلتفرم هوشمند برای مسیر‌یابی شغلی است. 
+                        ما بر اساس علایق، مهارت‌ها و هدف‌های شما، مسیرهای شغلی مختلف را پیشنهاد می‌دهیم،
+                        مهارت‌های لازم برای هر مسیر را مشخص می‌کنیم و کمک می‌کنیم قدم‌به‌قدم به شغل هدف‌تان نزدیک شوید.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- سوال ۲ -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>چطور می‌توانم از راهِکار استفاده کنم؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        استفاده از راهِکار بسیار ساده است. 
+                        کافیست در سایت ثبت‌نام کنید، پروفایل شغلی خود را تکمیل کنید 
+                        (علایق، مهارت‌ها، سطح تحصیلات و هدف شغلی)، سپس سیستم، مسیرهای شغلی پیشنهادی را به همراه 
+                        مهارت‌های مورد نیاز، منابع یادگیری و گام‌های بعدی در اختیارتان قرار می‌دهد.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- سوال ۳ -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>آیا راهِکار فقط برای برنامه‌نویسی و حوزه IT است؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        خیر. تمرکز اصلی راهِکار روی شغل‌های مهارت‌محور و آینده‌دار است؛ 
+                        از حوزه‌های فناوری و برنامه‌نویسی گرفته تا بازاریابی دیجیتال، طراحی، تحلیل داده، 
+                        محصول، و سایر مسیرهای پرتقاضا در بازار کار. 
+                        به تدریج نیز مسیرهای جدید بر اساس داده‌های بازار کار اضافه می‌شوند.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- سوال ۴ -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>چطور مسیرهای شغلی و پیشنهادهای راهِکار شخصی‌سازی می‌شوند؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        سیستم راهِکار بر اساس اطلاعاتی که در پروفایل وارد می‌کنید (علایق، مهارت‌های فعلی، 
+                        تجربه، زمان در دسترس برای یادگیری و هدف درآمدی)، 
+                        مسیرهای مختلف را ارزیابی و رتبه‌بندی می‌کند. 
+                        سپس بر اساس اولویت‌ها و شرایط شما، مناسب‌ترین مسیرها را به همراه 
+                        نقشه مهارت‌ها و گام‌های پیشنهادی نمایش می‌دهد.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- سوال ۵ -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>آیا راهِکار تضمینی برای استخدام یا پیدا کردن شغل می‌دهد؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        راهِکار تضمین ۱۰۰٪ برای استخدام نمی‌دهد، 
+                        اما تمام تلاش ما این است که شفاف‌ترین مسیر را به شما نشان دهیم، 
+                        مهارت‌های درست را پیشنهاد کنیم و شما را برای ورود به بازار کار آماده کنیم 
+                        (از جمله رزومه، نمونه کار و آمادگی مصاحبه). 
+                        تصمیم نهایی کارفرما و شرایط بازار کار خارج از کنترل ماست، 
+                        اما با مسیر درست، شانس موفقیت شما به شکل قابل توجهی افزایش پیدا می‌کند.
+                    </p>
+                </div>
+            </div>
+
+            <!-- سوال ۶ (اختیاری - درباره هزینه/رایگان بودن) -->
+            <div class="content-faq-item">
+                <div class="content-faq-question">
+                    <span>استفاده از راهِکار رایگان است یا هزینه دارد؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="content-faq-answer">
+                    <p>
+                        بخش‌های پایه‌ای راهِکار مانند ساخت پروفایل شغلی و دیدن مسیرهای کلی ممکن است رایگان باشد، 
+                        اما برخی امکانات پیشرفته مثل تحلیل عمیق‌تر، گزارش‌های ویژه یا همراهی منتور 
+                        می‌تواند نسخه پولی داشته باشد. 
+                        سیاست دقیق قیمت‌گذاری در صفحه شرایط و تعرفه‌ها به‌روزرسانی می‌شود.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<!-- <script src="{{ url_for('static', filename='js/js-index.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

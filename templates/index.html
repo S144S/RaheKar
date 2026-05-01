@@ -3,42 +3,469 @@
 {% block title %}خانه | راهِکار{% endblock %}
 
 {% block content %}
-{% if not context.is_take_exam %}
-<section class="hero">
-    <div class="container hero-container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-rocket"></i>
-                <span>آینده‌ی خود را بسازید</span>
+<section class="new-hero">
+        <div class="container new-hero-container">
+            <div class="new-hero-content">
+                <div class="new-hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>آینده‌ی خود را بسازید</span>
+                </div>
+                <h1 class="new-hero-title">مسیر شغلی آینده را امروز ببینید</h1>
+                <p class="new-hero-description">
+                    با راهِکار مسیر مورد نیاز بازار کار را به‌صورت حرفه‌ای بچینید. 
+                    مسیرهای تخصصی ما توسط برترین اساتید طراحی شده‌اند.
+                </p>
+                <div class="new-hero-actions">
+                    {% if user.is_authenticated %}
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+                    {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-primary">
+                    {% endif %}
+                        <i class="fas fa-play-circle"></i>
+                        <span>شروع ماجراجویی</span>
+                    </a>
+                    <a href="{{ url_for('about') }}" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <span>درباره ما</span>
+                    </a>
+                </div>
             </div>
-            <h1 class="hero-title">رویای آینده را امروز خلق کنید</h1>
-            <p class="hero-description">
-                با راهِکار مسیر ورود به بازار کار را متناسب با علایق و استعداد خود بسازید. 
-                آزمون تخصصی ما توسط برترین اساتید طراحی شده است.
-            </p>
-            <div class="hero-actions">
-                <a href="courses.html" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i>
-                    <span>شروع آزمون</span>
-                </a>
-                <a href="about.html" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i>
-                    <span>درباره ما</span>
-                </a>
+            <div class="new-hero-visual">
+                <div class="new-hero-image">
+                    <!-- تصویر هیرو -->
+                    <img src="{{ url_for('static', filename='images/hero4.png') }}" alt="راهِکار">
+                </div>
+                <div class="new-hero-background-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-image">
-                <!-- تصویر هیرو -->
-                <img src="{{ url_for('static', filename='images/hero4.png') }}" alt="راهِکار">
+    </section>
+
+    <!-- بخش جدید - چرا فراآموز؟ -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">چرا فراآموز؟</span>
+                <h2 class="section-title">تجربه آموزشی متفاوت</h2>
+                <p class="section-description">
+                    فراآموز با ارائه راهکارهای نوین آموزشی، یادگیری را برای شما لذت‌بخش و مؤثر می‌کند
+                </p>
             </div>
-            <div class="hero-background-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
+            
+            <div class="why-us-grid">
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="why-us-title">آموزش کاربردی</h3>
+                    <p class="why-us-description">
+                        دوره‌های ما بر اساس نیازهای واقعی بازار کار طراحی شده‌اند. شما مهارت‌هایی را یاد می‌گیرید که مستقیماً در محیط کار قابل استفاده هستند.
+                    </p>
+                    <a href="#" class="why-us-link">
+                        <span>بیشتر بدانید</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="why-us-title">اساتید مجرب</h3>
+                    <p class="why-us-description">
+                        تمامی مدرسین ما از متخصصان فعال در صنعت هستند که تجربیات عملی خود را در اختیار شما قرار می‌دهند.
+                    </p>
+                    <a href="#" class="why-us-link">
+                        <span>بیشتر بدانید</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="why-us-title">پروژه‌محور</h3>
+                    <p class="why-us-description">
+                        در پایان هر دوره، پروژه‌های عملی انجام می‌دهید که در رزومه شما قرار گرفته و مهارت‌هایتان را به نمایش می‌گذارند.
+                    </p>
+                    <a href="#" class="why-us-link">
+                        <span>بیشتر بدانید</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-{% endif %}
+    </section>
+
+    <!-- بخش جدید - دستاوردهای ما -->
+    <section class="achievements">
+        <div class="achievements-background">
+            <div class="achievements-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="section-header" style="color: white;">
+                <span class="section-subtitle" style="color: rgba(255,255,255,0.8);">دستاوردهای ما</span>
+                <h2 class="section-title" style="color: white;">در مسیر موفقیت با شما</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.8);">
+                    افتخار می‌کنیم که در کنار هزاران دانشجو، مسیر یادگیری و پیشرفت را طی کرده‌ایم
+                </p>
+            </div>
+            
+            <div class="achievements-container">
+                <div class="achievement-box">
+                    <div class="achievement-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="achievement-number">۱۵,۰۰۰+</div>
+                    <div class="achievement-label">دانشجوی فعال</div>
+                </div>
+                
+                <div class="achievement-box">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="achievement-number">۱۵۰+</div>
+                    <div class="achievement-label">مدرس متخصص</div>
+                </div>
+                
+                <div class="achievement-box">
+                    <div class="achievement-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="achievement-number">۴۵۰+</div>
+                    <div class="achievement-label">دوره آموزشی</div>
+                </div>
+                
+                <div class="achievement-box">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="achievement-number">۹۸٪</div>
+                    <div class="achievement-label">رضایت دانشجویان</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش جدید - مقالات -->
+    <section class="articles">
+        <div class="container">
+            <div class="articles-header">
+                <div>
+                    <span class="section-subtitle">مقالات آموزشی</span>
+                    <h2 class="section-title">جدیدترین مطالب آموزشی</h2>
+                </div>
+                <a href="articles.html" class="btn btn-primary">مشاهده همه مقالات</a>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- مقاله ۱ -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="{{ url_for('static', filename='images/card-8') }}" alt="توسعه‌دهنده Full-Stack">
+                        <span class="article-badge">برنامه‌نویسی</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">تکنولوژی</div>
+                        <h3 class="article-title">۱۰ نکته کلیدی برای تبدیل شدن به یک توسعه‌دهنده Full-Stack</h3>
+                        <p class="article-excerpt">
+                            در این مقاله به بررسی راهکارهای عملی برای تبدیل شدن به یک توسعه‌دهنده فول‌استک می‌پردازیم و مهارت‌های ضروری را معرفی می‌کنیم.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-info">
+                                <div class="article-info-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>۲ هفته پیش</span>
+                                </div>
+                                <div class="article-info-item">
+                                    <i class="far fa-eye"></i>
+                                    <span>۱,۲۴۵</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-author">
+                            <div class="author-avatar">AR</div>
+                            <span>علی رضایی</span>
+                        </div>
+                        <div class="article-footer">
+                            <div class="article-read-time">۸ دقیقه مطالعه</div>
+                            <button class="btn-read-more">
+                                <span>مطالعه مقاله</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مقاله ۲ -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="{{ url_for('static', filename='images/card-9') }}" alt="هوش مصنوعی">
+                        <span class="article-badge">هوش مصنوعی</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">تکنولوژی</div>
+                        <h3 class="article-title">تأثیر هوش مصنوعی بر آینده مشاغل و مهارت‌های مورد نیاز</h3>
+                        <p class="article-excerpt">
+                            چگونه هوش مصنوعی در حال تغییر بازار کار است و چه مهارت‌هایی برای موفقیت در عصر هوش مصنوعی ضروری هستند؟
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-info">
+                                <div class="article-info-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>۱ ماه پیش</span>
+                                </div>
+                                <div class="article-info-item">
+                                    <i class="far fa-eye"></i>
+                                    <span>۲,۳۴۷</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-author">
+                            <div class="author-avatar">MK</div>
+                            <span>مریم کریمی</span>
+                        </div>
+                        <div class="article-footer">
+                            <div class="article-read-time">۱۲ دقیقه مطالعه</div>
+                            <button class="btn-read-more">
+                                <span>مطالعه مقاله</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مقاله ۳ -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="{{ url_for('static', filename='images/card-10') }}" alt="استارتاپ">
+                        <span class="article-badge">کسب و کار</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">کسب و کار</div>
+                        <h3 class="article-title">راهنمای جامع راه‌اندازی استارتاپ در سال ۲۰۲۳</h3>
+                        <p class="article-excerpt">
+                            از ایده‌پردازی تا اجرا: مراحل کلیدی راه‌اندازی یک استارتاپ موفق و چالش‌های پیش رو را بررسی می‌کنیم.
+                        </p>
+                        <div class="article-meta">
+                            <div class="article-info">
+                                <div class="article-info-item">
+                                    <i class="far fa-calendar"></i>
+                                    <span>۳ هفته پیش</span>
+                                </div>
+                                <div class="article-info-item">
+                                    <i class="far fa-eye"></i>
+                                    <span>۱,۸۹۲</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-author">
+                            <div class="author-avatar">RN</div>
+                            <span>رضا نوروزی</span>
+                        </div>
+                        <div class="article-footer">
+                            <div class="article-read-time">۱۰ دقیقه مطالعه</div>
+                            <button class="btn-read-more">
+                                <span>مطالعه مقاله</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش جدید - به اهداف خود برسید -->
+    <section class="achieve-goals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">مسیر موفقیت</span>
+                <h2 class="section-title">به اهداف خود برسید</h2>
+                <p class="section-description">
+                    با فراآموز، مهارت‌های مورد نیاز برای رسیدن به اهداف شغلی و شخصی خود را کسب کنید
+                </p>
+            </div>
+            
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="goal-title">شغل بهتر</h3>
+                    <p class="goal-description">
+                        با یادگیری مهارت‌های جدید، فرصت‌های شغلی بهتر و درآمد بالاتری برای خود ایجاد کنید.
+                    </p>
+                </div>
+                
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="goal-title">رشد سریع</h3>
+                    <p class="goal-description">
+                        با دوره‌های فشرده و کاربردی ما، در کوتاه‌ترین زمان به مهارت‌های مورد نیاز مسلط شوید.
+                    </p>
+                </div>
+                
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="goal-title">جامعه حرفه‌ای</h3>
+                    <p class="goal-description">
+                        به جامعه‌ای از متخصصان و علاقه‌مندان بپیوندید و شبکه ارتباطی خود را گسترش دهید.
+                    </p>
+                </div>
+                
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="goal-title">گواهینامه معتبر</h3>
+                    <p class="goal-description">
+                        در پایان هر دوره، گواهینامه معتبر دریافت کنید و مهارت‌های خود را به طور رسمی تأیید کنید.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+ 
+
+    <!-- بخش جدید - رویدادهای آینده -->
+    <section class="future-events">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">رویدادهای آموزشی</span>
+                <h2 class="section-title">رویدادهای آینده</h2>
+                <p class="section-description">
+                    در رویدادهای آنلاین و حضوری ما شرکت کنید و از فرصت‌های شبکه‌سازی و یادگیری بهره‌مند شوید
+                </p>
+            </div>
+            
+            <div class="events-grid">
+                <!-- رویداد ۱ -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="{{ url_for('static', filename='images/card-11') }}" alt="وبینار توسعه وب">
+                        <div class="event-date">
+                            <span class="event-day">۱۵</span>
+                            <span class="event-month">آذر</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-category">وبینار رایگان</div>
+                        <h3 class="event-title">آینده توسعه وب: فریمورک‌های مدرن در سال ۲۰۲۳</h3>
+                        <p class="event-description">
+                            در این وبینار به بررسی فریمورک‌های مدرن توسعه وب و روندهای آینده این حوزه می‌پردازیم.
+                        </p>
+                        <div class="event-meta">
+                            <div class="event-info">
+                                <div class="event-info-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>۱۸:۰۰ - ۲۰:۰۰</span>
+                                </div>
+                                <div class="event-info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>آنلاین</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-footer">
+                            <div class="event-price">رایگان</div>
+                            <button class="btn-register-event">
+                                <i class="fas fa-user-plus"></i>
+                                <span>ثبت‌نام</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- رویداد ۲ -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="{{ url_for('static', filename='images/card-12') }}" alt="کارگاه هوش مصنوعی">
+                        <div class="event-date">
+                            <span class="event-day">۲۲</span>
+                            <span class="event-month">آذر</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-category">کارگاه عملی</div>
+                        <h3 class="event-title">کارگاه عملی هوش مصنوعی و ChatGPT</h3>
+                        <p class="event-description">
+                            در این کارگاه عملی، نحوه استفاده از ChatGPT و سایر ابزارهای هوش مصنوعی در کسب و کار را فرا می‌گیرید.
+                        </p>
+                        <div class="event-meta">
+                            <div class="event-info">
+                                <div class="event-info-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>۱۶:۰۰ - ۱۹:۰۰</span>
+                                </div>
+                                <div class="event-info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>حضوری</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-footer">
+                            <div class="event-price">۱۵۰,۰۰۰ تومان</div>
+                            <button class="btn-register-event">
+                                <i class="fas fa-user-plus"></i>
+                                <span>ثبت‌نام</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- رویداد ۳ -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="{{ url_for('static', filename='images/card-13') }}" alt="همایش فناوری">
+                        <div class="event-date">
+                            <span class="event-day">۵</span>
+                            <span class="event-month">دی</span>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-category">همایش تخصصی</div>
+                        <h3 class="event-title">همایش سالیانه فناوری و نوآوری</h3>
+                        <p class="event-description">
+                            بزرگترین همایش سالیانه فناوری با حضور برترین متخصصان داخلی و بین‌المللی.
+                        </p>
+                        <div class="event-meta">
+                            <div class="event-info">
+                                <div class="event-info-item">
+                                    <i class="far fa-clock"></i>
+                                    <span>۰۹:۰۰ - ۱۷:۰۰</span>
+                                </div>
+                                <div class="event-info-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>حضوری</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-footer">
+                            <div class="event-price">۳۰۰,۰۰۰ تومان</div>
+                            <button class="btn-register-event">
+                                <i class="fas fa-user-plus"></i>
+                                <span>ثبت‌نام</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/js-index.js') }}"></script>
 {% endblock %}

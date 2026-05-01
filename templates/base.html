@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css') }}">
 
     <!-- استایل‌ها -->
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/css-index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    {% block style %}{% endblock %}
 </head>
 
 <body class="dark-theme">
@@ -36,9 +39,9 @@
 
             <nav>
                 <ul class="nav">
-                    <li><a href="{{ url_for('home') }}" class="nav-link">درباره ما</a></li>
-                    <li><a href="{{ url_for('home') }}" class="nav-link">تماس با ما</a></li>
-                    <li><a href="{{ url_for('home') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
+                    <li><a href="{{ url_for('about') }}" class="nav-link">درباره ما</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="nav-link">تماس با ما</a></li>
+                    <li><a href="{{ url_for('jobs') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
                 </ul>
             </nav>
 
@@ -56,7 +59,7 @@
     <div class="overlay" id="overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-header">
-            <a href="index.html" class="logo">
+            <a href="{{ url_for('home') }}" class="logo">
                 <i class="fas fa-graduation-cap logo-icon"></i>
                 <span>راهِکار</span>
             </a>
@@ -65,9 +68,9 @@
             </button>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="{{ url_for('home') }}" class="nav-link">درباره ما</a></li>
-            <li><a href="{{ url_for('home') }}" class="nav-link">تماس با ما</a></li>
-            <li><a href="{{ url_for('home') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
+            <li><a href="{{ url_for('about') }}" class="nav-link">درباره ما</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">تماس با ما</a></li>
+            <li><a href="{{ url_for('jobs') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
         </ul>
     </div>
 
@@ -81,7 +84,7 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-col">
-                <a href="{{ url_for('home') }}" class="footer-logo">
+                <a href="{{ url_for('dashboard') }}" class="footer-logo">
                     <i class="fas fa-graduation-cap footer-logo-icon"></i>
                     <span>راهِکار</span>
                 </a>
@@ -94,10 +97,10 @@
             <div class="footer-col">
                 <h3>لینک‌های سریع</h3>
                 <ul class="footer-links">
-                    <li><a href="{{ url_for('home') }}">صفحه اصلی</a></li>
-                    <li><a href="{{ url_for('home') }}">درباره ما</a></li>
-                    <li><a href="{{ url_for('home') }}">دوره‌ها</a></li>
-                    <li><a href="{{ url_for('home') }}">مقالات</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">صفحه اصلی</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">درباره ما</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">دوره‌ها</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">مقالات</a></li>
                 </ul>
             </div>
 
@@ -114,6 +117,6 @@
     </footer>
 
     <!--Scripts-->
-    <script src="{{ url_for('static', filename='js/js-index.js') }}"></script>
+    {% block js %}{% endblock %}
 </body>
 </html>
