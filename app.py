@@ -38,7 +38,7 @@ def home():
 # آشنایی با مشاغل مختلف
 @app.route("/jobs")
 def jobs():
-    return render_template('index.html', user=current_user)
+    return render_template('jobs.html', user=current_user)
 
 # درباره ما
 @app.route("/about-us")
