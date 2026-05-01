@@ -92,7 +92,11 @@ def logout():
 @app.route('/')
 @login_required
 def home():
-    return render_template("index.html", user=current_user)
+    context = {
+        "user": current_user,
+        "is_take_exam": False
+    }
+    return render_template("index.html", context=context)
 
 if __name__ == "__main__":
     with app.app_context():
