@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}راهِکار | پلتفرم مسیریابی شغلی مدرن{% endblock %}</title>
+    <meta name="description" content="پلتفرم مسیریابی شغلی با نگاهی تخصصی و کاربردی">
+
+    <!-- فونت‌ها -->
+    <link rel="preload" 
+          href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Regular.woff2') }}" 
+          as="font" type="font/woff2" crossorigin>
+    <link rel="preload" 
+          href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Medium.woff2') }}" 
+          as="font" type="font/woff2" crossorigin>
+    <link rel="preload"
+          href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Bold.woff2') }}"
+          as="font" type="font/woff2" crossorigin>
+
+    <!-- آیکون‌ها -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css') }}">
+
+    <!-- استایل‌ها -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/css-index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    {% block style %}{% endblock %}
+</head>
+
+<body class="dark-theme">
+
+    <!-- ===== هدر ===== -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <span>راهِکار</span>
+            </a>
+
+            <nav>
+                <ul class="nav">
+                    <li><a href="{{ url_for('about') }}" class="nav-link">درباره ما</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="nav-link">تماس با ما</a></li>
+                    <li><a href="{{ url_for('jobs') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- منوی موبایل -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="{{ url_for('home') }}" class="logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+                <span>راهِکار</span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobile-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="{{ url_for('about') }}" class="nav-link">درباره ما</a></li>
+            <li><a href="{{ url_for('contact') }}" class="nav-link">تماس با ما</a></li>
+            <li><a href="{{ url_for('jobs') }}" class="nav-link">آشنایی با مشاغل مختلف</a></li>
+        </ul>
+    </div>
+
+    <!-- ===== محتوای صفحه ===== -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ===== فوتر ===== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="{{ url_for('dashboard') }}" class="footer-logo">
+                    <i class="fas fa-graduation-cap footer-logo-icon"></i>
+                    <span>راهِکار</span>
+                </a>
+                <p class="footer-description">
+                    راهِکار یک پلتفرم مسیریابی شغلی آنلاین است که با ارائه نگاهی تخصصی و کاربردی، 
+                    به شما کمک می‌کند آینده شغلی خود را متحول کنید.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>لینک‌های سریع</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">صفحه اصلی</a></li>
+                    <li><a href="{{ url_for('about') }}">درباره ما</a></li>
+                    <li><a href="{{ url_for('contact') }}">تماس با ما</a></li>
+                    <li><a href="{{ url_for('jobs') }}">آشنایی با مشاغل</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>اطلاعات تماس</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> مشهد، بین کوهسنگی 9 و 11، دبیرستان دولتی دخترانه فرزان</li>
+                    <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                    <li><i class="fas fa-envelope"></i> info@rahekar.com</li>
+                    <li><i class="fas fa-clock"></i> شنبه تا پنجشنبه: ۸ تا ۱۷</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!--Scripts-->
+    {% block js %}{% endblock %}
+</body>
+</html>

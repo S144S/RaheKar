@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}مشاغل | راهِکار{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- بخش هیرو وبلاگ -->
+<section class="blogs-blog-hero">
+    <div class="blogs-blog-hero-background">
+        <div class="blogs-blog-hero-pattern"></div>
+    </div>
+    
+    <div class="blogs-container mt-2">
+        <div class="blogs-blog-hero-content">
+            
+            <h1 class="blogs-blog-hero-title">آشنایی با مسیرهای شغلی</h1>
+            
+            <p class="blogs-blog-hero-description">
+                در این بخش با واقعیت‌های دنیای کار آشنا شوید؛
+                از مهارت‌های لازم هر شغل تا مسیر ورود، درآمد، آینده شغلی و نیاز بازار.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- بخش اصلی وبلاگ -->
+<main class="blogs-blog-main">
+    <div class="blogs-container">
+        <div class="blogs-blog-container">
+            <!-- مقالات -->
+            <div class="blogs-blog-posts">
+
+                <!-- پست معرفی شغل ۱ -->
+                <article class="blogs-blog-post">
+                    <div class="blogs-post-image">
+                        <img src="{{ url_for('static', filename='images/datasc.png') }}" alt="آشنایی با شغل تحلیل‌گر داده">
+                        <span class="blogs-post-category">تحلیل داده</span>
+                    </div>
+                    <div class="blogs-post-content">
+                        <div class="blogs-post-meta">
+                            <div class="blogs-post-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>۲۱ فروردین ۱۴۰۳</span>
+                            </div>
+                            <div class="blogs-post-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>8 دقیقه مطالعه</span>
+                            </div>
+                        </div>
+
+                        <h2 class="blogs-post-title">آشنایی با شغل تحلیل‌گر داده؛ از مهارت‌ها تا مسیر ورود</h2>
+                        <p class="blogs-post-excerpt">
+                            تحلیل‌گر داده یکی از شغل‌های پرتقاضا و آینده‌ساز است.
+                            در این معرفی، مهارت‌های ضروری، ابزارهای مهم، میانگین درآمد، فرصت‌های شغلی و مسیر قدم‌به‌قدم ورود به این حوزه را بررسی می‌کنیم.
+                        </p>
+
+                        <div class="blogs-post-footer">
+                            <div class="blogs-post-author">
+                                <div class="blogs-author-avatar">
+                                    <img src="{{ url_for('static', filename='images/card-10.avif') }}" alt="تحریریه راهِکار">
+                                </div>
+                                <div class="blogs-author-info">
+                                    <div class="blogs-author-name">تحریریه راهِکار</div>
+                                    <div class="blogs-post-date">منتشر شده در ۲۱ فروردین</div>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('job_datascience') }}" class="blogs-read-more">
+                                <span>ادامه مطلب</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- پست معرفی شغل ۲ -->
+                <article class="blogs-blog-post">
+                    <div class="blogs-post-image">
+                        <img src="{{ url_for('static', filename='images/uiux.png') }}" alt="مسیر شغلی طراح تجربه کاربری">
+                        <span class="blogs-post-category">طراحی محصول</span>
+                    </div>
+
+                    <div class="blogs-post-content">
+                        <div class="blogs-post-meta">
+                            <div class="blogs-post-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>۱۸ فروردین ۱۴۰۳</span>
+                            </div>
+                            <div class="blogs-post-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>۶ دقیقه مطالعه</span>
+                            </div>
+                        </div>
+
+                        <h2 class="blogs-post-title">طراح تجربه کاربری (UX/UI) کیست و چطور وارد این حوزه شویم؟</h2>
+                        <p class="blogs-post-excerpt">
+                            طراحی تجربه کاربری فقط زیبایی نیست؛
+                            ترکیبی از روانشناسی، تحلیل رفتار، تفکر طراحی و مهارت‌های بصری است.
+                            در این مقاله با مسیر ورود، ابزارها، درآمد و آینده شغلی UX/UI آشنا می‌شوید.
+                        </p>
+
+                        <div class="blogs-post-footer">
+                            <div class="blogs-post-author">
+                                <div class="blogs-author-avatar">
+                                    <img src="{{ url_for('static', filename='images/card-10.avif') }}" alt="تحریریه راهِکار">
+                                </div>
+                                <div class="blogs-author-info">
+                                    <div class="blogs-author-name">تحریریه راهِکار</div>
+                                    <div class="blogs-post-date">منتشر شده در 31 فروردین</div>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('job_uiux') }}" class="blogs-read-more">
+                                <span>ادامه مطلب</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- سایدبار -->
+            <aside class="blogs-blog-sidebar">
+
+                <!-- پست‌های محبوب -->
+                <div class="blogs-sidebar-widget">
+                    <h3 class="blogs-widget-title">پست‌های محبوب</h3>
+
+                    <div class="blogs-popular-posts">
+                        <div class="blogs-popular-post">
+                            <div class="blogs-popular-post-image">
+                                <img src="{{ url_for('static', filename='images/datasc.png') }}" alt="پست محبوب اول">
+                            </div>
+                            <div class="blogs-popular-post-content">
+                                <h4 class="blogs-popular-post-title">آشنایی با شغل تحلیل‌گر داده؛ از مهارت‌ها تا مسیر ورود</h4>
+                                <div class="blogs-popular-post-meta">
+                                    <span>۸ دقیقه</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blogs-popular-post">
+                            <div class="blogs-popular-post-image">
+                                <img src="{{ url_for('static', filename='images/uiux.png') }}" alt="مهارت‌های نرم">
+                            </div>
+                            <div class="blogs-popular-post-content">
+                                <h4 class="blogs-popular-post-title">طراح تجربه کاربری (UX/UI) کیست و چطور وارد این حوزه شویم؟</h4>
+                                <div class="blogs-popular-post-meta">
+                                    <span>۶ دقیقه</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+{% block js %}
+<!-- <script src="{{ url_for('static', filename='js/js-index.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}درباره ما | راهِکار{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="new-hero">
+    <div class="container new-hero-container">
+        <div class="new-hero-content">
+            <div class="new-hero-badge">
+                <i class="fas fa-compass"></i>
+                <span>داستان راهِکار</span>
+            </div>
+            <h1 class="new-hero-title">ما اینجاییم تا مسیر شغلی‌ات را شفاف کنیم</h1>
+            <p class="new-hero-description">
+                راهِکار یک پلتفرم هوشمند مسیر‌یابی شغلی است که به شما کمک می‌کند
+                بر اساس علاقه، مهارت و نیاز بازار کار، بهترین مسیر حرفه‌ای خود را پیدا کنید.
+            </p>
+            <div class="new-hero-actions">
+                <a href="{{ url_for('register') }}" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    <span>شروع مسیر من</span>
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    <span>تماس با ما</span>
+                </a>
+            </div>
+        </div>
+        <div class="new-hero-visual">
+            <div class="new-hero-image">
+                <img src="{{ url_for('static', filename='images/hero2.png') }}" alt="درباره راهِکار">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="why-us">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">ماموریت ما</span>
+            <h2 class="section-title">پر کردن فاصله بین آموزش و بازار کار</h2>
+            <p class="section-description">
+                بسیاری از افراد نمی‌دانند از کجا شروع کنند یا چه مهارت‌هایی واقعاً آینده‌دار هستند.
+                راهِکار این ابهام را از بین می‌برد.
+            </p>
+        </div>
+
+        <div class="why-us-grid">
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="why-us-title">شفاف‌سازی مسیر</h3>
+                <p class="why-us-description">
+                    ما مسیرهای شغلی را به صورت گام‌به‌گام طراحی می‌کنیم تا دقیق بدانید
+                    از چه مهارتی شروع کرده و به کجا خواهید رسید.
+                </p>
+            </div>
+
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="why-us-title">تحلیل بازار کار</h3>
+                <p class="why-us-description">
+                    مسیرها بر اساس داده‌های واقعی بازار کار، میزان درآمد،
+                    و تقاضای شغلی طراحی می‌شوند.
+                </p>
+            </div>
+
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3 class="why-us-title">شخصی‌سازی هوشمند</h3>
+                <p class="why-us-description">
+                    با تحلیل علایق و مهارت‌های شما، پیشنهادهایی متناسب با
+                    شرایط و اهداف شخصی‌تان ارائه می‌دهیم.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision Section -->
+<section class="achievements">
+    <div class="container">
+        <div class="section-header" style="color: white;">
+            <span class="section-subtitle" style="color: rgba(255,255,255,0.8);">چشم‌انداز ما</span>
+            <h2 class="section-title" style="color: white;">ساختن نسلی هدفمند و توانمند</h2>
+            <p class="section-description" style="color: rgba(255,255,255,0.8);">
+                باور داریم هر فردی می‌تواند با مسیر درست، به بهترین نسخه حرفه‌ای خود تبدیل شود.
+            </p>
+        </div>
+
+        <div class="achievements-container">
+            <div class="achievement-box">
+                <div class="achievement-number">هدفمند</div>
+                <div class="achievement-label">انتخاب آگاهانه مسیر شغلی</div>
+            </div>
+
+            <div class="achievement-box">
+                <div class="achievement-number">مهارت‌محور</div>
+                <div class="achievement-label">تمرکز بر مهارت‌های کاربردی</div>
+            </div>
+
+            <div class="achievement-box">
+                <div class="achievement-number">آینده‌نگر</div>
+                <div class="achievement-label">هماهنگ با روندهای جهانی</div>
+            </div>
+
+            <div class="achievement-box">
+                <div class="achievement-number">داده‌محور</div>
+                <div class="achievement-label">تصمیم‌گیری بر اساس تحلیل</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="achieve-goals">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">راهِکار چگونه کار می‌کند؟</span>
+            <h2 class="section-title">از علاقه تا استخدام</h2>
+            <p class="section-description">
+                فرآیند ساده اما دقیق ما، شما را از مرحله شناخت خود تا ورود به بازار کار همراهی می‌کند.
+            </p>
+        </div>
+
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="goal-title">۱. شناخت شما</h3>
+                <p class="goal-description">
+                    بررسی علایق، مهارت‌ها و اهداف شغلی شما.
+                </p>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-icon">
+                    <i class="fas fa-map"></i>
+                </div>
+                <h3 class="goal-title">۲. پیشنهاد مسیر</h3>
+                <p class="goal-description">
+                    ارائه مسیر شغلی دقیق با مهارت‌های مورد نیاز هر مرحله.
+                </p>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="goal-title">۳. یادگیری هدفمند</h3>
+                <p class="goal-description">
+                    تمرکز روی مهارت‌هایی که مستقیماً در استخدام تاثیر دارند.
+                </p>
+            </div>
+
+            <div class="goal-card">
+                <div class="goal-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="goal-title">۴. ورود به بازار کار</h3>
+                <p class="goal-description">
+                    آمادگی برای مصاحبه و ساخت رزومه حرفه‌ای.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="future-events">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle text-center">آماده‌ای شروع کنی؟</span>
+            <h2 class="section-title">مسیر شغلی‌ات را امروز پیدا کن</h2>
+            <p class="section-description">
+                آینده حرفه‌ای تو با یک تصمیم شروع می‌شود.
+            </p>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+            <a href="{{ url_for('register') }}" class="btn btn-primary" style="padding:15px 35px; font-size:18px;">
+                <i class="fas fa-rocket"></i>
+                <span>شروع رایگان</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/js-index.js') }}"></script>
+{% endblock %}

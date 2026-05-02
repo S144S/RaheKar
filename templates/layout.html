@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa-IR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}داشبورد کاربری - فراآموز{% endblock %}</title>
+    
+    <!-- فونت‌های محلی -->
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Medium.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='fonts/vazirmatn/Vazirmatn-Bold.woff2') }}" as="font" type="font/woff2" crossorigin>
+
+    <!-- آیکون‌های محلی -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css') }}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body class="dashboards-dark-theme">
+    <div class="dashboards-dashboard-container">
+        <!-- نوار کناری -->
+        <aside class="dashboards-sidebar" id="sidebar">
+            <div class="dashboards-sidebar-header">
+                <a href="index.html" class="dashboards-sidebar-logo">
+                    <i class="fas fa-graduation-cap dashboards-sidebar-logo-icon"></i>
+                    <span>فراآموز</span>
+                </a>
+                <button class="dashboards-sidebar-close" id="sidebar-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="dashboards-sidebar-nav">
+                <div class="dashboards-nav-section">
+                    <h3 class="dashboards-nav-section-title">اصلی</h3>
+                    <ul class="dashboards-nav-links">
+                        <li>
+                            <a href="#" class="dashboards-nav-link active">
+                                <i class="fas fa-home"></i>
+                                <span>داشبورد</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-book"></i>
+                                <span>دوره‌های من</span>
+                                <span class="dashboards-nav-badge">۵</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-heart"></i>
+                                <span>علاقه‌مندی‌ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>سبد خرید</span>
+                                <span class="dashboards-nav-badge">۲</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dashboards-nav-section">
+                    <h3 class="dashboards-nav-section-title">تحصیلی</h3>
+                    <ul class="dashboards-nav-links">
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <span>تکالیف</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>آزمون‌ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-certificate"></i>
+                                <span>گواهینامه‌ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span>پیشرفت تحصیلی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="dashboards-nav-section">
+                    <h3 class="dashboards-nav-section-title">حساب کاربری</h3>
+                    <ul class="dashboards-nav-links">
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-user"></i>
+                                <span>پروفایل</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-cog"></i>
+                                <span>تنظیمات</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-credit-card"></i>
+                                <span>پرداخت‌ها</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="dashboards-nav-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span>پشتیبانی</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="dashboards-sidebar-footer">
+                <div class="dashboards-user-profile">
+                    <div class="dashboards-user-avatar">
+                        <img src="./assets/images/me.png" alt="علی رضایی">
+                    </div>
+                    <div class="dashboards-user-info">
+                        <div class="dashboards-user-name">علی رضایی</div>
+                        <div class="dashboards-user-email">ali.rezaei@example.com</div>
+                    </div>
+                </div>
+                <div class="dashboards-user-menu">
+                    <button class="dashboards-user-menu-btn" title="تنظیمات">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="dashboards-user-menu-btn" title="اعلان‌ها">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="dashboards-user-menu-btn" title="خروج">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- محتوای اصلی -->
+        <main class="dashboards-main-content">
+            {% block main_header %}
+            <!-- تیتـر و اکشن‌های بالای صفحه -->
+            <div class="dashboards-dashboard-header">
+                <h1 class="dashboards-page-title">{% block page_title %}داشبورد کاربری{% endblock %}</h1>
+                <div class="dashboards-header-actions">
+                    <div class="dashboards-search-box">
+                        <input type="text" class="dashboards-search-input" placeholder="جستجو در دوره‌ها، درس‌ها...">
+                        <button class="dashboards-search-btn" aria-label="جستجو">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="dashboards-theme-toggle" id="theme-toggle" aria-label="تغییر تم">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="dashboards-mobile-menu-toggle" id="mobile-menu-toggle" aria-label="منو">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            {% endblock %}
+
+            {% block content %}
+            <!-- این بخش توسط صفحات مختلف مثلا dashboard.html تغییر داده می‌شود -->
+            {% endblock %}
+        </main>
+        
+        <!-- overlay برای منوی موبایل -->
+        <div class="dashboards-mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

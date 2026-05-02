@@ -30,6 +30,37 @@ def load_user(user_id):
     return Users.query.get(int(user_id))
 
 # APP =========================================================================
+# خانه
+@app.route("/")
+def home():
+    return render_template('index.html', user=current_user)
+
+# آشنایی با مشاغل مختلف
+@app.route("/jobs")
+def jobs():
+    return render_template('jobs.html', user=current_user)
+
+# آشنایی با شغل علم داده
+@app.route("/job-datascience")
+def job_datascience():
+    return render_template('job-Datascience.html', user=current_user)
+
+# آشنایی با شغل طراحی UI/UX
+@app.route("/job-uiux")
+def job_uiux():
+    return render_template('job-uiux.html', user=current_user)
+
+# درباره ما
+@app.route("/about-us")
+def about():
+    return render_template('about.html', user=current_user)
+
+# تماس با ما
+@app.route("/contact")
+def contact():
+    return render_template('contact.html', user=current_user)
+
+# ثبت نام
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -64,6 +95,7 @@ def register():
         return redirect(url_for('login'))
     return render_template("register.html")
 
+# ورود
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -82,12 +114,22 @@ def login():
 
     return render_template("login.html")
 
+# خروج
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for("login"))
 
+# صفحه بعد از وارد شدن
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    context = {
+        "user": current_user,
+        "is_take_exam": False
+    }
+    return render_template("dashboard.html", context=context)
 
 if __name__ == "__main__":
     with app.app_context():
