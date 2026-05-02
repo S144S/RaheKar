@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='icons/css/all.min.css') }}">
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     {% block head_extra %}{% endblock %}
 </head>
 
@@ -22,9 +23,9 @@
         <!-- نوار کناری -->
         <aside class="dashboards-sidebar" id="sidebar">
             <div class="dashboards-sidebar-header">
-                <a href="index.html" class="dashboards-sidebar-logo">
+                <a href="{{ url_for('dashboard') }}" class="dashboards-sidebar-logo">
                     <i class="fas fa-graduation-cap dashboards-sidebar-logo-icon"></i>
-                    <span>فراآموز</span>
+                    <span>راهِکار</span>
                 </a>
                 <button class="dashboards-sidebar-close" id="sidebar-close">
                     <i class="fas fa-times"></i>
@@ -33,92 +34,35 @@
             
             <nav class="dashboards-sidebar-nav">
                 <div class="dashboards-nav-section">
-                    <h3 class="dashboards-nav-section-title">اصلی</h3>
                     <ul class="dashboards-nav-links">
                         <li>
-                            <a href="#" class="dashboards-nav-link active">
+                            <a href="{{ url_for('dashboard') }}" class="dashboards-nav-link active">
                                 <i class="fas fa-home"></i>
-                                <span>داشبورد</span>
+                                <span>خانه</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="dashboards-nav-link">
+                            <a href="{{ url_for('dashboard') }}" class="dashboards-nav-link">
                                 <i class="fas fa-book"></i>
-                                <span>دوره‌های من</span>
-                                <span class="dashboards-nav-badge">۵</span>
+                                <span>توضیحات شغل</span>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-heart"></i>
-                                <span>علاقه‌مندی‌ها</span>
+                                <i class="fas fa-route"></i>
+                                <span>مسیر شغلی</span>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>سبد خرید</span>
-                                <span class="dashboards-nav-badge">۲</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="dashboards-nav-section">
-                    <h3 class="dashboards-nav-section-title">تحصیلی</h3>
-                    <ul class="dashboards-nav-links">
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-tasks"></i>
-                                <span>تکالیف</span>
+                                <i class="fas fa-robot"></i>
+                                <span>دستیار هوش‌مصنوعی</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-file-alt"></i>
-                                <span>آزمون‌ها</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-certificate"></i>
-                                <span>گواهینامه‌ها</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-chart-line"></i>
-                                <span>پیشرفت تحصیلی</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="dashboards-nav-section">
-                    <h3 class="dashboards-nav-section-title">حساب کاربری</h3>
-                    <ul class="dashboards-nav-links">
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-user"></i>
-                                <span>پروفایل</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-cog"></i>
-                                <span>تنظیمات</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-credit-card"></i>
-                                <span>پرداخت‌ها</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="dashboards-nav-link">
-                                <i class="fas fa-question-circle"></i>
-                                <span>پشتیبانی</span>
+                            <a href="{{ url_for('consultant') }}" class="dashboards-nav-link">
+                                <i class="fas fa-handshake"></i>
+                                <span>مشاوره حضوری</span>
                             </a>
                         </li>
                     </ul>
@@ -128,23 +72,19 @@
             <div class="dashboards-sidebar-footer">
                 <div class="dashboards-user-profile">
                     <div class="dashboards-user-avatar">
-                        <img src="./assets/images/me.png" alt="علی رضایی">
+                        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="پروفایل">
                     </div>
                     <div class="dashboards-user-info">
-                        <div class="dashboards-user-name">علی رضایی</div>
-                        <div class="dashboards-user-email">ali.rezaei@example.com</div>
+                        <div class="dashboards-user-name">{{ context.user.fname + ' ' + context.user.lname}}</div>
                     </div>
                 </div>
                 <div class="dashboards-user-menu">
-                    <button class="dashboards-user-menu-btn" title="تنظیمات">
+                    <a href="{{ url_for('dashboard') }}" class="dashboards-user-menu-btn" title="تنظیمات">
                         <i class="fas fa-cog"></i>
-                    </button>
-                    <button class="dashboards-user-menu-btn" title="اعلان‌ها">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <button class="dashboards-user-menu-btn" title="خروج">
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="dashboards-user-menu-btn" title="خروج">
                         <i class="fas fa-sign-out-alt"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
         </aside>
@@ -154,14 +94,8 @@
             {% block main_header %}
             <!-- تیتـر و اکشن‌های بالای صفحه -->
             <div class="dashboards-dashboard-header">
-                <h1 class="dashboards-page-title">{% block page_title %}داشبورد کاربری{% endblock %}</h1>
+                <h1 class="dashboards-page-title">{% block page_title %}خانه{% endblock %}</h1>
                 <div class="dashboards-header-actions">
-                    <div class="dashboards-search-box">
-                        <input type="text" class="dashboards-search-input" placeholder="جستجو در دوره‌ها، درس‌ها...">
-                        <button class="dashboards-search-btn" aria-label="جستجو">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
                     <button class="dashboards-theme-toggle" id="theme-toggle" aria-label="تغییر تم">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -171,6 +105,16 @@
                 </div>
             </div>
             {% endblock %}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
 
             {% block content %}
             <!-- این بخش توسط صفحات مختلف مثلا dashboard.html تغییر داده می‌شود -->

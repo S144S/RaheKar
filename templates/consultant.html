@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}خانه | راهِکار{% endblock %}
+
+{% block page_title %}درخواست مشاوره{% endblock %}
+
+{% block content %}
+<div class="consult-card">
+    {% if context.form_disabled %}
+    <div class="consult-warning">
+        شما قبلاً درخواست مشاوره ثبت کرده‌اید. پس از بررسی درخواست قبلی می‌توانید دوباره اقدام کنید.
+    </div>
+    {% endif %}
+    <form method="post" action="{{ url_for('consultant') }}" class="consult-form">
+        <div class="form-group">
+            <label>نام و نام خانوادگی</label>
+            <input type="text" name="full_name" value="{{ context.user.fname + ' ' + context.user.lname }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>شماره تماس</label>
+            <input type="tel" name="phone" placeholder="09123456789" {{ 'disabled' if context.form_disabled }} required>
+        </div>
+
+        <div class="form-group">
+            <label>تاریخ مد نظر</label>
+            <input type="date" name="date" {{ 'disabled' if context.form_disabled }} required>
+        </div>
+
+        <div class="form-group">
+            <label>ساعت مد نظر</label>
+            <input type="time" name="time" {{ 'disabled' if context.form_disabled }} required>
+        </div>
+
+        <div class="form-group full">
+            <label>توضیحات</label>
+            <textarea name="description" placeholder="توضیح مختصری درباره موضوع مدنظر مشاوره بنویسید" {{ 'disabled' if context.form_disabled }}></textarea>
+        </div>
+
+        <button class="submit-btn" {{ 'disabled' if context.form_disabled }}>
+            ارسال درخواست
+        </button>
+
+    </form>
+</div>
+{% endblock %}
