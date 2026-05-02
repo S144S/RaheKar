@@ -108,7 +108,7 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             flash("با موفقیت وارد شدید", "success")
-            return redirect(url_for("home"))
+            return redirect(url_for("dashboard"))
 
         flash("شماره یا رمز اشتباه است", "danger")
 

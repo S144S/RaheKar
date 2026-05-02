@@ -1,44 +1,7 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 
 {% block title %}خانه | راهِکار{% endblock %}
 
 {% block content %}
-{% if not context.is_take_exam %}
-<section class="hero">
-    <div class="container hero-container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-rocket"></i>
-                <span>آینده‌ی خود را بسازید</span>
-            </div>
-            <h1 class="hero-title">رویای آینده را امروز خلق کنید</h1>
-            <p class="hero-description">
-                با راهِکار مسیر ورود به بازار کار را متناسب با علایق و استعداد خود بسازید. 
-                آزمون تخصصی ما توسط برترین اساتید طراحی شده است.
-            </p>
-            <div class="hero-actions">
-                <a href="courses.html" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i>
-                    <span>شروع آزمون</span>
-                </a>
-                <a href="about.html" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i>
-                    <span>درباره ما</span>
-                </a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-image">
-                <!-- تصویر هیرو -->
-                <img src="{{ url_for('static', filename='images/hero4.png') }}" alt="راهِکار">
-            </div>
-            <div class="hero-background-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-        </div>
-    </div>
-</section>
-{% endif %}
+
 {% endblock %}
