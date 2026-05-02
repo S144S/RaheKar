@@ -40,6 +40,16 @@ def home():
 def jobs():
     return render_template('jobs.html', user=current_user)
 
+# آشنایی با شغل علم داده
+@app.route("/job-datascience")
+def job_datascience():
+    return render_template('job-Datascience.html', user=current_user)
+
+# آشنایی با شغل طراحی UI/UX
+@app.route("/job-uiux")
+def job_uiux():
+    return render_template('job-uiux.html', user=current_user)
+
 # درباره ما
 @app.route("/about-us")
 def about():

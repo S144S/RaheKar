@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}مشاغل | راهِکار{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+    <!-- محتوای اصلی صفحه وبلاگ -->
+    <main class="blog-1-detail">
+        <div class="container">
+            <div class="blog-1-container">
+                <!-- محتوای مقاله -->
+                <article class="blog-1-content">
+                    <header class="blog-1-header">
+                        <div class="blog-1-meta">
+                            <span class="blog-1-category">داده‌کاوی و تحلیل</span>
+                            <span class="blog-1-date">
+                                <i class="far fa-calendar"></i>
+                                <span>21 فروردین ۱۴۰۳</span>
+                            </span>
+                            <span class="blog-1-reading-time">
+                                <i class="far fa-clock"></i>
+                                <span>زمان مطالعه: 8 دقیقه</span>
+                            </span>
+                        </div>
+                        <h1 class="blog-1-title">آشنایی با شغل تحلیل‌گر داده؛ از مهارت‌ها تا مسیر ورود</h1>
+                        <p class="blog-1-excerpt">
+                            آیا به دنیای اعداد و داده‌ها علاقه دارید؟ در این مقاله بررسی می‌کنیم که تحلیل‌گر داده کیست، چه مهارت‌هایی نیاز دارد و چگونه می‌توانید مسیر شغلی خود را در این حوزه پرتقاضا شروع کنید.
+                        </p>
+                    </header>
+
+                    <div class="blog-1-featured-image">
+                        <img src="{{ url_for('static', filename='images/datasc.png') }}" alt="تحلیل‌گر داده">
+                    </div>
+
+                    <div class="blog-1-body">
+                        <p>در عصر اطلاعات، داده‌ها ارزشمندترین دارایی کسب‌وکارها هستند. اما داده‌های خام بدون تحلیل، ارزشی ندارند. اینجاست که نقش کلیدی <strong>تحلیل‌گر داده (Data Analyst)</strong> اهمیت پیدا می‌کند. کسی که داده‌ها را به بینش‌های استراتژیک برای تصمیم‌گیری تبدیل می‌کند.</p>
+
+                        <h2>تحلیل‌گر داده کیست؟</h2>
+                        <p>تحلیل‌گر داده وظیفه جمع‌آوری، پردازش و تحلیل مجموعه‌داده‌های مختلف را بر عهده دارد تا الگوها، روندها و پاسخ‌های لازم برای حل چالش‌های تجاری را پیدا کند. آن‌ها پل میان داده‌های فنی و تصمیمات مدیریتی هستند.</p>
+
+                        <h3>مهارت‌های کلیدی مورد نیاز</h3>
+                        <ul>
+                            <li><strong>مهارت‌های فنی:</strong> تسلط بر SQL برای استخراج داده، زبان‌های برنامه‌نویسی مانند Python یا R، و ابزارهای تجسم داده (مثل Tableau یا Power BI).</li>
+                            <li><strong>آمار و ریاضیات:</strong> درک مفاهیم پایه آماری برای تحلیل دقیق نتایج.</li>
+                            <li><strong>مهارت‌های نرم:</strong> تفکر انتقادی، حل مسئله و مهم‌تر از همه، توانایی داستان‌سرایی با داده (Data Storytelling) برای ارائه گزارش به مدیران.</li>
+                        </ul>
+
+                        <h2>مسیر ورود به این حرفه</h2>
+                        <p>برای ورود به دنیای تحلیل داده، نیازی نیست حتما مدرک دانشگاهی مرتبط داشته باشید. نقشه راه پیشنهادی ما شامل مراحل زیر است:</p>
+                        
+                        <ol>
+                            <li><strong>یادگیری مبانی آمار:</strong> شناخت تست‌های آماری و احتمالات.</li>
+                            <li><strong>تسلط بر SQL:</strong> زبان اصلی ارتباط با دیتابیس‌ها.</li>
+                            <li><strong>آموزش یک زبان تحلیل داده (پایتون پیشنهاد می‌شود):</strong> یادگیری کتابخانه‌هایی مثل Pandas و NumPy.</li>
+                            <li><strong>تجسم داده (Visualization):</strong> ساخت داشبوردهای حرفه‌ای.</li>
+                            <li><strong>ایجاد پورتفولیو:</strong> اجرای پروژه‌های واقعی روی داده‌های عمومی (مانند Kaggle).</li>
+                        </ol>
+
+                        <blockquote>
+                            <p>نکته: مهم‌ترین عامل موفقیت در تحلیل داده، کنجکاوی و اشتیاق به یادگیری مستمر در کنار پروژه‌های واقعی است.</p>
+                        </blockquote>
+
+                        <h2>آینده شغلی تحلیل‌گر داده</h2>
+                        <p>با افزایش حجم داده‌ها در هر صنعتی، تقاضا برای تحلیل‌گران داده روزبه‌روز در حال افزایش است. این شغل علاوه بر درآمد مناسب، فرصت‌های شغلی متنوعی را در حوزه‌های مالی، بازاریابی، سلامت و تکنولوژی فراهم می‌کند.</p>
+
+                        <h2>نتیجه‌گیری</h2>
+                        <p>تبدیل شدن به یک تحلیل‌گر داده مسیری چالش‌برانگیز اما بسیار پاداش‌دهنده است. با ترکیب ابزارهای فنی و ذهنیت تحلیلی، می‌توانید نقشی حیاتی در رشد سازمان‌ها ایفا کنید. اگر آماده‌اید، اولین قدم یعنی یادگیری SQL را همین امروز بردارید!</p>
+
+                        <div class="blog-1-tags">
+                            <a href="#" class="blog-1-tag">تحلیل داده</a>
+                            <a href="#" class="blog-1-tag">پایتون</a>
+                            <a href="#" class="blog-1-tag">SQL</a>
+                            <a href="#" class="blog-1-tag">علم داده</a>
+                            <a href="#" class="blog-1-tag">مسیر شغلی</a>
+                        </div>
+                    </div>
+                    
+                    <!-- سایر بخش‌ها مثل فوتر و سایدبار را مطابق نمونه قبلی خود حفظ کنید -->
+                </article>
+                <aside class="blog-1-sidebar">
+                    <!-- ویجت نویسنده -->
+                    <div class="blog-1-sidebar-widget blog-1-author-widget">
+                        <div class="blog-1-author-widget-avatar">
+                            <img src="{{ url_for('static', filename='images/card-10.avif') }}" alt="تحریریه راهِکار">
+                        </div>
+                        <h3 class="blog-1-author-widget-name">تحریریه راهِکار</h3>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}
+
+{% block js %}
+<!-- <script src="{{ url_for('static', filename='js/js-index.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
