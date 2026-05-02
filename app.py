@@ -53,6 +53,28 @@ class ConsultationRequest(db.Model):
     user = db.relationship("Users", backref="consult_requests")
 
 
+class UsersJob(db.Model):
+    __tablename__ = "users_job"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # ✅ ارتباط با یوزر
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    # ✅ اطلاعات درخواست
+    job_title = db.Column(db.String(120), nullable=False)
+
+    # ✅ وضعیت درخواست
+    deducted_from = db.Column(db.String(50), default="user")  
+    # user | exam
+
+    # ✅ تاریخ ثبت
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # ✅ رابطه برگشتی
+    user = db.relationship("Users", backref="user_job")
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return Users.query.get(int(user_id))
@@ -163,7 +185,6 @@ def dashboard():
 @app.route('/consultant', methods=["GET", "POST"])
 @login_required
 def consultant():
-
     if request.method == "POST":
         try:
             new_request = ConsultationRequest(
@@ -194,6 +215,27 @@ def consultant():
 
     return render_template("consultant.html", context=context)
 
+
+@app.route('/chosen-job', methods=['POST'])
+@login_required
+def chosen_job():
+    job = request.form.get('future_job')
+    try:
+        new_job = UsersJob(
+            user_id=current_user.id,
+            job_title=job,
+            deducted_from="user"
+        )
+
+        db.session.add(new_job)
+        db.session.commit()
+
+        flash("شغل آینده شما با موفقیت دریافت شد.", "success")
+    except Exception as e:
+        print(e)
+        flash("درحال حاضر سرویس انتخاب شعل فعال نیست!", "danger")
+
+    return redirect(url_for('dashboard'))
 
 if __name__ == "__main__":
     with app.app_context():

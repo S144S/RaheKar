@@ -3,5 +3,58 @@
 {% block title %}خانه | راهِکار{% endblock %}
 
 {% block content %}
+<div class="flow-wrapper">
 
+    <div class="flow-node main-question">
+        <h3>آیا میدانید میخواهید در آینده چه شغلی داشته باشید؟</h3>
+
+        <div class="flow-buttons">
+            <button class="flow-btn yes-btn" onclick="selectAnswer('yes')">بله ✅</button>
+            <button class="flow-btn no-btn" onclick="selectAnswer('no')">خیر ❌</button>
+        </div>
+    </div>
+    <!-- مرحله بعد اگر YES -->
+    <div class="flow-node hidden" id="yes-step">
+        <p>عالیه! 🎯<br>کدام شغل زیر برگزیده شماست:</p>
+
+        <!-- فرم انتخاب شغل آینده -->
+        <form method="post" action="{{ url_for('chosen_job') }}">
+            <div class="career-list">
+
+                <label class="career-item"><input type="radio" name="future_job" value="programmer"><span>برنامه‌نویس</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="ai_engineer"><span>هوش مصنوعی</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="cyber_security"><span>امنیت سایبری</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="data_scientist"><span>دیتا ساینتیست</span></label>
+
+                <label class="career-item"><input type="radio" name="future_job" value="doctor"><span>پزشک</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="dentist"><span>دندانپزشک</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="nurse"><span>پرستار</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="psychologist"><span>روانشناس</span></label>
+
+                <label class="career-item"><input type="radio" name="future_job" value="civil_engineer"><span>مهندس عمران</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="mechanical_engineer"><span>مهندس مکانیک</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="architect"><span>معمار</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="pilot"><span>خلبان</span></label>
+
+                <label class="career-item"><input type="radio" name="future_job" value="graphic_designer"><span>طراح گرافیک</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="uiux"><span>طراح UI/UX</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="photographer"><span>عکاس</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="animator"><span>انیماتور</span></label>
+
+                <label class="career-item"><input type="radio" name="future_job" value="entrepreneur"><span>کارآفرین</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="digital_marketing"><span>دیجیتال مارکتر</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="teacher"><span>معلم</span></label>
+                <label class="career-item"><input type="radio" name="future_job" value="lawyer"><span>وکیل</span></label>
+
+            </div>
+            <button class="career-submit-btn">ثبت</button>
+            <p>اگه شغل مدنظر خود را پیدا نکردید یا هنوز مطمئن نیستید، از بالا گزینه خیر را بزنید</p>
+        </form>
+    </div>
+    <!-- مرحله بعد اگر NO -->
+    <div class="flow-node hidden" id="no-step">
+        <p>اشکالی نداره 👍<br>می‌تونیم کمکت کنیم مسی مناسب رو پیدا کنی.</p>
+    </div>
+
+</div>
 {% endblock %}
