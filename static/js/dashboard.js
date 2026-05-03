@@ -1337,3 +1337,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+function selectAnswer(answer){
+
+    document.getElementById("yes-step").classList.add("hidden");
+    document.getElementById("no-step").classList.add("hidden");
+
+    if(answer === "yes"){
+        document.getElementById("yes-step").classList.remove("hidden");
+    }else{
+        document.getElementById("no-step").classList.remove("hidden");
+    }
+}

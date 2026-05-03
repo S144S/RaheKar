@@ -1,8 +1,9 @@
-.flash-message{
-    padding:10px;
-    margin-bottom:15px;
-    border-radius:6px;
-    font-size:14px;
+.flash-message {
+    position: relative;
+    padding: 12px 40px 12px 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    color: #fff;
 }
 
 .flash-success{
@@ -15,6 +16,294 @@
     color:#721c24;
 }
 
+.flash-message .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.flash-message .close-btn:hover {
+    color: #fff;
+}
+
 .mt-2{
     margin-top: 2rem !important;
+}
+
+:root {
+    --card-bg: #ffffff;         /* پس‌زمینه کارت */
+    --border-color: #e5e7eb;   /* رنگ مرز */
+    --text-color: #111;        /* رنگ متن */
+    --input-bg: #fafafa;       /* پس‌زمینه ورودی‌ها */
+    --input-border: #d0d0d0;   /* رنگ مرز ورودی‌ها */
+}
+
+.dashboards-dark-theme {
+    --card-bg: #1e1e1e;        /* پس‌زمینه کارت در تم تیره */
+    --border-color: #2f2f2f;   /* رنگ مرز در تم تیره */
+    --text-color: #e6e6e6;     /* رنگ متن در تم تیره */
+    --input-bg: #2a2a2a;       /* پس‌زمینه ورودی‌ها در تم تیره */
+    --input-border: #444444;   /* رنگ مرز ورودی‌ها در تم تیره */
+}
+
+/* کارت فرم */
+.consult-card {
+    max-width: 700px;          /* حداکثر عرض کارت */
+    margin: 40px auto;        /* حاشیه خودکار برای مرکز کردن */
+    padding: 30px;            /* حاشیه داخلی */
+    border-radius: 14px;      /* گوشه‌های گرد */
+    background: var(--card-bg);/* پس‌زمینه کارت */
+    border: 1px solid var(--border-color); /* مرز کارت */
+}
+
+/* فرم */
+.consult-form {
+    display: grid;             /* نمایش به صورت grid */
+    grid-template-columns: 1fr 1fr; /* دو ستون */
+    gap: 20px;                /* فاصله بین ستون‌ها */
+}
+
+/* گروه */
+.form-group {
+    display: flex;             /* نمایش به صورت flex */
+    flex-direction: column;    /* چیدمان عمودی */
+}
+
+.form-group.full {
+    grid-column: 1 / -1;      /* عرض کامل در یک سطر */
+}
+
+.form-group label {
+    font-size: 14px;          /* اندازه فونت */
+    margin-bottom: 6px;       /* فاصله زیر لیبل */
+    color: var(--text-color); /* رنگ متن لیبل */
+}
+
+/* ورودی‌ها */
+.form-group input,
+.form-group textarea {
+    padding: 12px 14px;       /* فضای داخلی */
+    border-radius: 10px;      /* گوشه‌های گرد */
+    border: 1px solid var(--input-border); /* مرز */
+    background: var(--input-bg); /* پس‌زمینه */
+    color: var(--text-color);  /* رنگ متن */
+    font-family: inherit;     /* وراثت فونت */
+    transition: all .2s ease;  /* انیمیشن نرم */
+}
+
+/* textarea */
+.form-group textarea {
+    min-height: 100px;         /* حداقل ارتفاع */
+    resize: vertical;          /* اجازه تغییر اندازه در جهت عمودی */
+}
+
+/* حالت فوکوس */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;             /* عدم وجود خط حاشیه */
+    border-color: #4f7cff;    /* تغییر رنگ مرز در حالت فوکوس */
+    box-shadow: 0 0 0 2px rgba(79, 124, 255, 0.25); /* سایه در حالت فوکوس */
+}
+
+/* دکمه */
+.submit-btn {
+    grid-column: 1 / -1;      /* عرض کامل دکمه */
+    padding: 12px;            /* فضای داخلی */
+    border: none;             /* عدم وجود مرز */
+    border-radius: 10px;      /* گوشه‌های گرد */
+    background: #4f7cff;      /* رنگ پس‌زمینه */
+    color: white;             /* رنگ متن */
+    font-size: 15px;          /* اندازه فونت */
+    cursor: pointer;          /* نشانگر موس به حالت اشاره‌گر */
+}
+
+.submit-btn:hover {
+    opacity: 0.9;             /* کاهش شفافیت در حالت hover */
+}
+
+.consult-warning{
+    padding:14px;
+    margin-bottom:20px;
+    border-radius:10px;
+    background:#fff3cd;
+    border:1px solid #ffeeba;
+    color:#856404;
+}
+
+.flow-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:60px;
+    gap:40px;
+}
+
+.flow-node{
+    background:var(--card-bg);
+    color:var(--text-color);
+    padding:30px 40px;
+    border-radius:20px;
+    border:2px solid var(--border-color);
+    text-align:center;
+    width:400px;
+    max-width:90%;
+    position:relative;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+/* خط پایین نود اصلی */
+.main-question::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:40px;
+    background:var(--border-color);
+    bottom:-40px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.flow-buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.flow-btn{
+    padding:10px 22px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.yes-btn{
+    background:#22c55e;
+    color:white;
+}
+
+.no-btn{
+    background:#ef4444;
+    color:white;
+}
+
+.flow-btn:hover{
+    transform:translateY(-2px);
+    opacity:0.9;
+}
+
+.hidden{
+    display:none;
+}
+
+.career-list{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.career-item{
+    border:2px solid var(--border-color);
+    border-radius:10px;
+    padding:10px;
+    cursor:pointer;
+    text-align:center;
+    background:var(--card-bg);
+    transition:0.2s;
+    font-size:14px;
+}
+
+.career-item:hover{
+    border-color:#6366f1;
+    transform:translateY(-2px);
+}
+
+.career-item input{
+    display:none;
+}
+
+.career-item input:checked + span{
+    color:#6366f1;
+    font-weight:600;
+}
+
+.career-result-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:70vh;
+}
+
+.career-result-box{
+    background:#1e1e1e;
+    padding:50px;
+    border-radius:16px;
+    text-align:center;
+    max-width:500px;
+    width:100%;
+}
+
+.career-result-title{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.career-result-job{
+    font-size:42px;
+    font-weight:bold;
+    color:#4da3ff;
+    margin-bottom:40px;
+}
+
+.career-result-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.career-btn{
+    background:#2d2d2d;
+    padding:14px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    transition:0.2s;
+}
+
+.career-btn:hover{
+    background:#4da3ff;
+}
+
+
+.career-submit-btn{
+    background-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+
+/* موبایل */
+@media (max-width: 700px) {
+    .consult-form {
+        grid-template-columns: 1fr; /* نمایش تک ستونه در نمایشگرهای کوچک */
+    }
+
+    .career-list{
+        grid-template-columns:repeat(2,1fr);
+    }
 }

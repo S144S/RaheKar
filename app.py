@@ -1,7 +1,9 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 # CONFIGS =====================================================================
 app = Flask(__name__)
@@ -17,12 +19,58 @@ db = SQLAlchemy(app)
 
 # DATABASE TABLES ============================================================= 
 class Users(db.Model, UserMixin):
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(120))
     lname = db.Column(db.String(120))
     phone = db.Column(db.String(120), unique=True)
     grade = db.Column(db.Integer, default=7)
     password = db.Column(db.String(200))
+
+class ConsultationRequest(db.Model):
+    __tablename__ = "consultation_requests"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # ✅ ارتباط با یوزر
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    # ✅ اطلاعات درخواست
+    phone = db.Column(db.String(120), nullable=False)
+    requested_date = db.Column(db.Date, nullable=False)
+    requested_time = db.Column(db.Time, nullable=False)
+    description = db.Column(db.Text)
+
+    # ✅ وضعیت درخواست
+    status = db.Column(db.String(50), default="pending")  
+    # pending | approved | rejected | done
+
+    # ✅ تاریخ ثبت
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # ✅ رابطه برگشتی
+    user = db.relationship("Users", backref="consult_requests")
+
+
+class UsersJob(db.Model):
+    __tablename__ = "users_job"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # ✅ ارتباط با یوزر
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    job_title = db.Column(db.String(120), nullable=False)
+
+    deducted_from = db.Column(db.String(50), default="user")  
+    # user | exam
+
+    # ✅ تاریخ ثبت
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # ✅ رابطه برگشتی
+    user = db.relationship("Users", backref="user_job")
 
 
 @login_manager.user_loader
@@ -121,15 +169,74 @@ def logout():
     logout_user()
     return redirect(url_for("login"))
 
-# صفحه بعد از وارد شدن
+# صفحه داشبورد
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    user_jobs = current_user.user_job
     context = {
         "user": current_user,
+        "job_title": user_jobs[0].job_title if user_jobs else None,
         "is_take_exam": False
     }
+    print(context)
     return render_template("dashboard.html", context=context)
+
+# صفحه درخواست مشاوره
+@app.route('/consultant', methods=["GET", "POST"])
+@login_required
+def consultant():
+    if request.method == "POST":
+        try:
+            new_request = ConsultationRequest(
+                user_id=current_user.id,
+                phone=request.form.get("phone"),
+                requested_date=datetime.strptime(request.form.get("date"), "%Y-%m-%d").date(),
+                requested_time=datetime.strptime(request.form.get("time"), "%H:%M").time(),
+                description=request.form.get("description")
+            )
+
+            db.session.add(new_request)
+            db.session.commit()
+
+            flash("درخواست شما ثبت شد بزودی با شما تماس میگیریم.", "success")
+        except Exception as e:
+            print(e)
+            flash("درحال حاضر سرویس درخواست مشاوره فعال نیست!", "danger")
+        return redirect(url_for("dashboard"))
+
+    existing_request = ConsultationRequest.query.filter(
+        ConsultationRequest.user_id == current_user.id,
+        ConsultationRequest.status.in_(["pending", "approved"])
+    ).first()
+    context = {
+        "user": current_user,
+        "form_disabled": existing_request is not None
+    }
+
+    return render_template("consultant.html", context=context)
+
+
+@app.route('/chosen-job', methods=['POST'])
+@login_required
+def chosen_job():
+    job = request.form.get('future_job')
+    try:
+        new_job = UsersJob(
+            user_id=current_user.id,
+            job_title=job,
+            deducted_from="user"
+        )
+
+        db.session.add(new_job)
+        db.session.commit()
+
+        flash("شغل آینده شما با موفقیت دریافت شد.", "success")
+    except Exception as e:
+        print(e)
+        flash("درحال حاضر سرویس انتخاب شعل فعال نیست!", "danger")
+
+    return redirect(url_for('dashboard'))
 
 if __name__ == "__main__":
     with app.app_context():
