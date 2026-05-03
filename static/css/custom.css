@@ -465,6 +465,49 @@
 }
 
 
+.career-test-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.test-header{
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+    text-align:center;
+}
+
+.question{
+    background:#141414;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:18px;
+}
+
+.question p{
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+.question label{
+    display:block;
+    margin-bottom:8px;
+    cursor:pointer;
+}
+
+.test-submit{
+    background:#4da3ff;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    font-size:16px;
+    display:block;
+    margin:25px auto;
+    cursor:pointer;
+}
+
 /* موبایل */
 @media (max-width: 700px) {
     .consult-form {

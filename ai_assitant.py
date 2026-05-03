@@ -1,6 +1,5 @@
 from openai import OpenAI
 import json
-import re
 
 client = OpenAI(base_url='https://api.gapgpt.app/v1', api_key="sk-TgPTWJVFuKzZOkLKdxO1NEhUhsrua7BbKyrdJc8l8X1yYV99")
 
@@ -96,6 +95,25 @@ def get_job_path(job_title: str) -> dict:
 
 def ask_job_ai(job_title, question):
     prompt = f"به عنوان یک متخصص شغلی، به این پرسش درباره شغل {job_title} نهایتا در 2 پاراگراف بده:\n{question}"
+    response = client.chat.completions.create(
+        model="gpt-4.1-mini",
+        messages=[{"role": "system", "content": "شما یک کارشناس شغلی فارسی هستید."},
+                  {"role": "user", "content": prompt}],
+        temperature=0.7
+    )
+    return response.choices[0].message.content
+
+
+def job_recommendation(info):
+    prompt = f"""
+تو یک مشاور شغلی فارسی حرفه ای هستی.
+
+من یک آزمون از کاربر گرفتم و نتایج آزمون رو برات در زیر گذاشتم:
+{info}
+
+ازت میخوام متناسب ترین شغل برای کاربر رو فقط با آوردن اسم اون شغل بدون هیچ توضیح اضافی و هیچ کلمه انگلیسی بدی.
+همچنین ارت میخوام  که شغل جدید اختراع نکنی و از شغل های موجود در دنیا استفاده کنی.
+"""
     response = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[{"role": "system", "content": "شما یک کارشناس شغلی فارسی هستید."},
