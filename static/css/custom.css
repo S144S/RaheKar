@@ -16,6 +16,11 @@
     color:#721c24;
 }
 
+.flash-warning{
+    background:#f8f4bc;
+    color:#dacb05;
+}
+
 .flash-message .close-btn {
     position: absolute;
     right: 12px;
@@ -296,6 +301,212 @@
     transition: all 0.3s ease;
 }
 
+.job-description-container{
+    max-width:900px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+/* بنر سبز AI */
+.ai-generated-banner{
+    background:linear-gradient(90deg,#1faa59,#28c76f);
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    color:white;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.ai-generated-banner i{
+    font-size:18px;
+}
+
+/* کارت توضیحات */
+.job-description-card{
+    background:#1e1e1e;
+    padding:35px;
+    border-radius:16px;
+    line-height:2;
+}
+
+.job-title{
+    font-size:30px;
+    margin-bottom:25px;
+    color:#4da3ff;
+}
+
+.job-description-text p{
+    margin-bottom:18px;
+    font-size:16px;
+    color:#e0e0e0;
+}
+
+.roadmap-container{
+    max-width:900px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+.roadmap-title{
+    font-size:28px;
+    color:#4da3ff;
+    margin:30px 0;
+    text-align:center;
+}
+
+.roadmap-timeline{
+    margin-top:20px;
+    border-right:3px solid #444;
+    padding-right:30px;
+    position:relative;
+}
+
+.roadmap-step{
+    display:flex;
+    align-items:flex-start;
+    margin-bottom:35px;
+    position:relative;
+}
+
+.step-circle{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    min-height:34px;
+    border-radius:50%;
+    background:#4da3ff;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+    margin-left:20px;
+    box-shadow:0 0 10px rgba(77,163,255,0.5);
+}
+
+.step-content{
+    background:#1e1e1e;
+    padding:18px 22px;
+    border-radius:12px;
+    font-size:15px;
+    line-height:2;
+    color:#e0e0e0;
+    width:100%;
+    transition:0.2s;
+}
+
+.step-content:hover{
+    background:#262626;
+}
+
+.chatbot-container{
+    max-width:700px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.ai-info-banner{
+    background:linear-gradient(90deg, #28a745, #1e7e34);
+    padding:15px;
+    border-radius:10px;
+    color:#fff;
+    margin-bottom:25px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.chat-form textarea{
+    width:100%;
+    height:120px;
+    background:#1f1f1f;
+    color:#e6e6e6;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    resize:none;
+    font-size:14px;
+}
+
+.chat-form button{
+    background:#4da3ff;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.chat-answer{
+    background:#1e1e1e;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+    line-height:2;
+}
+
+.chat-examples{
+    background:#131313;
+    padding:15px;
+    padding-right: 60px !important;
+    border-radius:12px;
+    margin-top:30px;
+}
+
+.chat-examples ul li{
+    margin-bottom:10px;
+    color:#9ad0ff;
+}
+
+
+.career-test-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.test-header{
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+    text-align:center;
+}
+
+.question{
+    background:#141414;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:18px;
+}
+
+.question p{
+    margin-bottom:12px;
+    font-weight:600;
+}
+
+.question label{
+    display:block;
+    margin-bottom:8px;
+    cursor:pointer;
+}
+
+.test-submit{
+    background:#4da3ff;
+    color:white;
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    font-size:16px;
+    display:block;
+    margin:25px auto;
+    cursor:pointer;
+}
 
 /* موبایل */
 @media (max-width: 700px) {

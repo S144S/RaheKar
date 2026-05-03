@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}خانه | راهِکار{% endblock %}
+
+{% block page_title %}مسیر شغلی{% endblock %}
+
+{% block content %}
+<div class="roadmap-container">
+
+    <!-- بنر اطلاع‌رسانی -->
+    <div class="ai-generated-banner">
+        <i class="fas fa-robot"></i>
+        <span>
+            این مسیر شغلی توسط دستیار هوش مصنوعی تولید شده و ممکن است در هر بار تولید تغییر کند.
+        </span>
+    </div>
+
+    <h2 class="roadmap-title">مسیر شغلی {{ context.job_title }}</h2>
+
+    <div class="roadmap-timeline">
+
+        {% for key, value in context.roadmap.items() %}
+        <div class="roadmap-step">
+            <div class="step-circle">{{ loop.index }}</div>
+            <div class="step-content">
+                <p>{{ value }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

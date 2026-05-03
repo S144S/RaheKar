@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}آزمون | راهِکار{% endblock %}
+
+{% block page_title %}آزمون استعدادیابی{% endblock %}
+
+{% block content %}
+<form method="POST" class="career-test-container">
+
+    <div class="test-header">
+        <h3>آزمون شناسایی شغل مناسب</h3>
+        <p>به ۲۰ سؤال زیر پاسخ دهید تا هوش مصنوعی شغل مناسب شما را پیشنهاد دهد.</p>
+    </div>
+    {% for key, q in context.questions.items() %}
+    <div class="question">
+        <p>{{ q.q }}</p>
+
+        {% for choice in q.choices %}
+        <label>
+            <input type="radio" name="{{ key }}" value="{{ choice }}" {% if loop.first %}required{% endif %}>
+            {{ choice }}
+        </label>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="test-submit">
+    پایان و ثبت
+    </button>
+
+</form>
+{% endblock %}
