@@ -36,7 +36,7 @@
                 <div class="dashboards-nav-section">
                     <ul class="dashboards-nav-links">
                         <li>
-                            <a href="{{ url_for('dashboard') }}" class="dashboards-nav-link active">
+                            <a href="{{ url_for('dashboard') }}" class="dashboards-nav-link">
                                 <i class="fas fa-home"></i>
                                 <span>خانه</span>
                             </a>
@@ -48,13 +48,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="dashboards-nav-link">
+                            <a href="{{ url_for('roadmap') }}" class="dashboards-nav-link">
                                 <i class="fas fa-route"></i>
                                 <span>مسیر شغلی</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="dashboards-nav-link">
+                            <a href="{{ url_for('chatbot') }}" class="dashboards-nav-link">
                                 <i class="fas fa-robot"></i>
                                 <span>دستیار هوش‌مصنوعی</span>
                             </a>

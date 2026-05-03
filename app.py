@@ -3,9 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, date
+import json
 
-from ai_assitant import get_job_info
+from ai_assitant import get_job_info, get_job_path, ask_job_ai
 
 # CONFIGS =====================================================================
 app = Flask(__name__)
@@ -85,6 +86,29 @@ class Job(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+class ChatUsage(db.Model):
+    __tablename__ = "chat_usage"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    count = db.Column(db.Integer, default=0)
+
+
+def check_and_increment_chat(user_id, limit=3):
+    today = date.today()
+    usage = ChatUsage.query.filter_by(user_id=user_id, date=today).first()
+
+    if not usage:
+        usage = ChatUsage(user_id=user_id, date=today, count=0)
+        db.session.add(usage)
+
+    if usage.count >= limit:
+        return False  # اجازه پرسش ندارد
+
+    usage.count += 1
+    db.session.commit()
+    return True
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -196,7 +220,7 @@ def dashboard():
     return render_template("dashboard.html", context=context)
 
 # صفحه توضیح شغل
-@app.route('/description', methods=["GET", "POST"])
+@app.route('/description')
 @login_required
 def description():
     user_jobs = current_user.user_job
@@ -220,10 +244,76 @@ def description():
         "job_title": job_title,
         "job_info": info
     }
-    print(info)
     return render_template("description.html", context=context)
 
+# صفحه مسیر شغلی
+@app.route('/roadmap')
+@login_required
+def roadmap():
+    user_jobs = current_user.user_job
+    job_title = user_jobs[0].job_title if user_jobs else None
+    
+    if not job_title:
+        flash("ابتدا باید شغل آینده شما مشخص شود!", "warning")
+        return redirect(url_for("dashboard"))
 
+    job = Job.query.filter_by(job_title=job_title).first()
+
+    # اگر هنوز roadmap وجود ندارد → از هوش مصنوعی بگیر
+    if not job or not job.roadmap:
+        info = get_job_path(job_title)   # احتمال زیاد dict برمی‌گرداند
+
+        # اگر خروجی رشته بود → تبدیل کن
+        if isinstance(info, str):
+            info = json.loads(info)
+
+        if not job:
+            job = Job(job_title=job_title, roadmap=info)
+            db.session.add(job)
+        else:
+            job.roadmap = info
+
+        db.session.commit()
+
+    else:
+        info = job.roadmap   # اینجا dict داریم، درست است
+
+    context = {
+        "user": current_user,
+        "job_title": job_title,
+        "roadmap": info     # به نام صحیح بفرست
+    }
+    print(info)
+    return render_template("roadmap.html", context=context)
+
+
+@app.route("/chatbot", methods=["GET", "POST"])
+@login_required
+def chatbot():
+    user_jobs = current_user.user_job
+    job_title = user_jobs[0].job_title if user_jobs else None
+
+    if not job_title:
+        flash("ابتدا باید شغل آینده شما مشخص شود.", "warning")
+        return redirect(url_for("dashboard"))
+
+    answer = None
+
+    if request.method == "POST":
+        question = request.form.get("question")
+
+        allowed = check_and_increment_chat(current_user.id)
+
+        if not allowed:
+            flash("شما امروز به سقف ۳ سؤال رسیدید!", "danger")
+        else:
+            answer = ask_job_ai(job_title, question)
+    context = {
+        "user": current_user,
+        "job_title": job_title,
+        "answer": answer  
+    }
+    return render_template("chatbot.html", context=context)
 
 # صفحه درخواست مشاوره
 @app.route('/consultant', methods=["GET", "POST"])

@@ -57,7 +57,7 @@ def get_job_path(job_title: str) -> dict:
 
 دستور:
 برای شغل "{job_title}" یک مسیر یادگیری و پیشرفت شغلی در **۱۰ گام** تولید کن.
-گام‌ها باید از دوران دبیرستان (پایه) شروع شوند و تا سطح حرفه‌ای ادامه پیدا کنند.
+گام‌ها باید از دوران دبیرستان نوبت اول (پایه) شروع شوند و تا سطح حرفه‌ای ادامه پیدا کنند.
 
 ساختار JSON دقیقاً باید به این شکل باشد:
 
@@ -92,6 +92,18 @@ def get_job_path(job_title: str) -> dict:
 
     except Exception as e:
         return {"error": str(e)}
+
+
+def ask_job_ai(job_title, question):
+    prompt = f"به عنوان یک متخصص شغلی، به این پرسش درباره شغل {job_title} نهایتا در 2 پاراگراف بده:\n{question}"
+    response = client.chat.completions.create(
+        model="gpt-4.1-mini",
+        messages=[{"role": "system", "content": "شما یک کارشناس شغلی فارسی هستید."},
+                  {"role": "user", "content": prompt}],
+        temperature=0.7
+    )
+    return response.choices[0].message.content
+
 
 if __name__ == "__main__":
 
