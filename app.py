@@ -61,10 +61,8 @@ class UsersJob(db.Model):
     # ✅ ارتباط با یوزر
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    # ✅ اطلاعات درخواست
     job_title = db.Column(db.String(120), nullable=False)
 
-    # ✅ وضعیت درخواست
     deducted_from = db.Column(db.String(50), default="user")  
     # user | exam
 
@@ -175,10 +173,13 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    user_jobs = current_user.user_job
     context = {
         "user": current_user,
+        "job_title": user_jobs[0].job_title if user_jobs else None,
         "is_take_exam": False
     }
+    print(context)
     return render_template("dashboard.html", context=context)
 
 # صفحه درخواست مشاوره

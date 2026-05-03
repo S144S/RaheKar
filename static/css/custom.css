@@ -1,8 +1,9 @@
-.flash-message{
-    padding:10px;
-    margin-bottom:15px;
-    border-radius:6px;
-    font-size:14px;
+.flash-message {
+    position: relative;
+    padding: 12px 40px 12px 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    color: #fff;
 }
 
 .flash-success{
@@ -13,6 +14,20 @@
 .flash-danger{
     background:#f8d7da;
     color:#721c24;
+}
+
+.flash-message .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.flash-message .close-btn:hover {
+    color: #fff;
 }
 
 .mt-2{
@@ -220,12 +235,53 @@
     font-weight:600;
 }
 
-/* موبایل */
-@media (max-width:700px){
-    .career-list{
-        grid-template-columns:repeat(2,1fr);
-    }
+.career-result-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:70vh;
 }
+
+.career-result-box{
+    background:#1e1e1e;
+    padding:50px;
+    border-radius:16px;
+    text-align:center;
+    max-width:500px;
+    width:100%;
+}
+
+.career-result-title{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.career-result-job{
+    font-size:42px;
+    font-weight:bold;
+    color:#4da3ff;
+    margin-bottom:40px;
+}
+
+.career-result-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.career-btn{
+    background:#2d2d2d;
+    padding:14px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    transition:0.2s;
+}
+
+.career-btn:hover{
+    background:#4da3ff;
+}
+
 
 .career-submit-btn{
     background-color: var(--primary);
@@ -245,5 +301,9 @@
 @media (max-width: 700px) {
     .consult-form {
         grid-template-columns: 1fr; /* نمایش تک ستونه در نمایشگرهای کوچک */
+    }
+
+    .career-list{
+        grid-template-columns:repeat(2,1fr);
     }
 }

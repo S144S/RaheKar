@@ -44,7 +44,7 @@
                         <li>
                             <a href="{{ url_for('dashboard') }}" class="dashboards-nav-link">
                                 <i class="fas fa-book"></i>
-                                <span>توضیحات شغل</span>
+                                <span>آشنایی با این شغل</span>
                             </a>
                         </li>
                         <li>
@@ -110,11 +110,13 @@
             {% if messages %}
                 {% for category, message in messages %}
                     <div class="flash-message flash-{{ category }}">
+                        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
                         {{ message }}
                     </div>
                 {% endfor %}
             {% endif %}
             {% endwith %}
+
 
             {% block content %}
             <!-- این بخش توسط صفحات مختلف مثلا dashboard.html تغییر داده می‌شود -->
