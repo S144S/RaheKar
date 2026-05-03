@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}خانه | راهِکار{% endblock %}
+
+{% block page_title %}آشنایی با {context.job_title}{% endblock %}
+
+{% block content %}
+<div class="job-description-container">
+
+    <!-- بنر اطلاع‌رسانی -->
+    <div class="ai-generated-banner">
+        <i class="fas fa-robot"></i>
+        <span>
+            این توضیحات توسط دستیار هوش مصنوعی تولید شده‌اند و ممکن است در هر بار بارگذاری تغییر کنند.
+        </span>
+    </div>
+
+    <!-- کارت توضیحات -->
+    <div class="job-description-card">
+        <h2 class="job-title">{{ context.job_title }}</h2>
+
+        <div class="job-description-text">
+            {{ context.job_info }}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

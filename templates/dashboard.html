@@ -11,7 +11,7 @@
         <h1 class="career-result-job">{{ context.job_title }}</h1>
 
         <div class="career-result-actions">
-            <a href="/job-description" class="career-btn">آشنایی با این شغل</a>
+            <a href="{{ url_for('description') }}" class="career-btn">آشنایی با این شغل</a>
             <a href="/career-path" class="career-btn">مسیر شغلی</a>
             <a href="/ai-assistant" class="career-btn">دستیار هوش مصنوعی</a>
             <a href="{{ url_for('consultant') }}" class="career-btn">مشاوره حضوری</a>

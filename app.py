@@ -5,6 +5,8 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
+from ai_assitant import get_job_info
+
 # CONFIGS =====================================================================
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "farzan"
@@ -71,6 +73,17 @@ class UsersJob(db.Model):
 
     # ✅ رابطه برگشتی
     user = db.relationship("Users", backref="user_job")
+
+
+class Job(db.Model):
+    __tablename__ = "jobs"
+
+    id = db.Column(db.Integer, primary_key=True)
+    job_title = db.Column(db.String(120), unique=True, nullable=False)
+    description = db.Column(db.Text)
+    roadmap = db.Column(db.JSON)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 
 @login_manager.user_loader
@@ -181,6 +194,36 @@ def dashboard():
     }
     print(context)
     return render_template("dashboard.html", context=context)
+
+# صفحه توضیح شغل
+@app.route('/description', methods=["GET", "POST"])
+@login_required
+def description():
+    user_jobs = current_user.user_job
+    job_title = user_jobs[0].job_title if user_jobs else None
+    if not job_title:
+        flash("ابتدا باید شغل آینده شما مشخص شود!", "warning")
+        return redirect(url_for("dashboard"))
+    job = Job.query.filter_by(job_title=job_title).first()
+    if not job or not job.description:
+        info = get_job_info(job_title)
+        if not job:
+            job = Job(job_title=job_title, description=info)
+            db.session.add(job)
+        else:
+            job.description = info
+        db.session.commit()
+    else:
+        info = job.description
+    context = {
+        "user": current_user,
+        "job_title": job_title,
+        "job_info": info
+    }
+    print(info)
+    return render_template("description.html", context=context)
+
+
 
 # صفحه درخواست مشاوره
 @app.route('/consultant', methods=["GET", "POST"])
